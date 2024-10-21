@@ -1,11 +1,11 @@
+import CreateEventForm from './components/Admin/CreateEventForm';
+
 const App = () => {
-  return <div className="bg-red-600">
-    
-    
-        
-    
-    
-    </div>;
+    return (
+        <>
+            <CreateEventForm />
+        </>
+    );
 };
 
 export default App;
