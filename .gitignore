@@ -13,7 +13,10 @@ dist-ssr
 *.local
 
 package-lock.json
+<<<<<<< HEAD
 
+=======
+>>>>>>> b350111336e1d21bb7235725ba8acced91324287
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
