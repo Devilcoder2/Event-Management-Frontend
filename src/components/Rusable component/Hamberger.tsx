@@ -7,7 +7,7 @@ import RegisteredUser from '../Admin/ResisteredUser';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedComponent, setSelectedComponent] = useState(null);
+  const [selectedComponent, setSelectedComponent] = useState<string | null>(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
