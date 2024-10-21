@@ -3,7 +3,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import AllUsers from '../Admin/AllEvent';
 import RegisteredUser from '../Admin/ResisteredUser';
-import CreateUser from '../Admin/CreateUser';
+// import CreateUser from '../Admin/CreateUser';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

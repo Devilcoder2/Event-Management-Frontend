@@ -1,8 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Rusable component/Home";
 import AllEvent from "./components/Admin/AllEvent";
+<<<<<<< HEAD
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
+=======
+import RegisteredUser from "./components/Admin/ResisteredUser";
+import CreateEventForm from "./components/Admin/CreateEventForm";
+>>>>>>> 41851f6028f6857ec99f070084436ba5bbbf2b5c
 
 const App = () => {
   return (
@@ -14,6 +19,8 @@ const App = () => {
 
 
         <Route path="/allEvents" element={<AllEvent />}></Route>
+        <Route path="/registerUser" element={<RegisteredUser />}></Route>
+        <Route path="/createEvent" element={<CreateEventForm />}></Route>
       </Routes>
     </BrowserRouter>
   );
