@@ -14,13 +14,21 @@ function Navbar() {
     navigate("/allEvents");
   }
 
+  const handleRegisterUser = () => {
+    navigate("/registerUser");
+  }
+
+  const handleCreateEvent = () => {
+    navigate("/createEvent");
+  }
+
   return (
     <div className='h-20 flex justify-between px-6 items-center shadow-md bg-slate-100'>
       <div><HamburgerMenu/></div>
       <div className='flex gap-2'>
       <Button variant="contained" onClick={handleAllEvents}>All events</Button>
-     <Button variant="contained">Resitered User</Button>
-     <Button variant="contained">Create event +</Button>
+     <Button variant="contained" onClick={handleRegisterUser}>Resitered User</Button>
+     <Button variant="contained" onClick={handleCreateEvent}>Create event +</Button>
       </div>
       <div className='flex gap-5'>
 
