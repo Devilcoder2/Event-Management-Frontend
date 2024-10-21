@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Card() {
+function Card({name,timing,eventCode,description}) {
   return (
    
 <div className="card">
@@ -16,10 +16,10 @@ function Card() {
     </svg>
     <p className="para">
       <ul>
-        <li>Name : </li>
-        <li>Timing : </li>
-        <li>Event Code : </li>
-        <li>Description : </li>
+        <li>Name : <span className='font-bold text-black'>{name}</span></li>
+        <li>Timing : <span className='font-bold text-black'> {timing} </span></li>
+        <li>Event Code : <span className='font-bold text-black'>{eventCode}</span>  </li>
+        <li>Description : <span className='font-bold text-black'>{description}</span>  </li>
 
 
       </ul>
