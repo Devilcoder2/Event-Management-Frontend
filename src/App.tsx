@@ -1,11 +1,12 @@
-const App = () => {
-  return <div className="bg-red-600">
-    
-    
-        
-    
-    
-    </div>;
-};
+// import React from 'react'
+import Register from './components/Auth/Register'
 
-export default App;
+const App = () => {
+  return (
+    <>
+      <Register/>
+    </>
+  )
+}
+
+export default App
