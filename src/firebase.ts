@@ -26,4 +26,52 @@ const auth = getAuth(app);
 // Initialize Firestore
 const db = getFirestore(app); // Firestore instance
 
-export { analytics, auth, db };
+
+
+//sending notification
+async function sendNotification(title, message, userId) {
+  try {
+      await db.collection('notifications').add({
+          title: title,
+          message: message,
+          userId: userId, 
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          read: false 
+      });
+      console.log('Notification sent successfully');
+  } catch (error) {
+      console.error('Error sending notification:', error);
+  }
+}
+
+
+// sendNotification('New Message', 'You have a new message from John', 'user_12345'); it will used in resister event component
+
+
+
+function getNotifications(userId) {
+  const notificationsQuery = query(
+      collection(db, 'notifications'),
+      where('userId', '==', userId),
+      orderBy('timestamp', 'desc')
+  );
+
+  onSnapshot(notificationsQuery, (snapshot) => {
+      const notifications = [];
+      snapshot.forEach((doc) => {
+          notifications.push({ id: doc.id, ...doc.data() });
+      });
+      console.log('Notifications:', notifications);
+      // Here, you can update the UI to show the notifications
+  });
+}
+
+// Example usage
+getNotifications('user_12345');
+
+
+
+// getNotifications('user_12345'); it will used in the admin allevent component
+
+
+export { analytics, auth, db,sendNotification,getNotifications };
