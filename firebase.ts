@@ -4,14 +4,14 @@ import { getAnalytics } from 'firebase/analytics';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_AUTH_DOMAIN',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_STORAGE_BUCKET',
-  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-  appId: 'YOUR_APP_ID',
-  measurementId: 'YOUR_MEASUREMENT_ID' // Required for Firebase Analytics
-};
+    apiKey: "AIzaSyBe6q44-wVAqnQITklN794qmuF24OwIn1A",
+    authDomain: "app2-69833.firebaseapp.com",
+    projectId: "app2-69833",
+    storageBucket: "app2-69833.appspot.com",
+    messagingSenderId: "251352689998",
+    appId: "1:251352689998:web:b27db5709ec3cff47e821f",
+    measurementId: "G-7VRPJXBM6X"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
