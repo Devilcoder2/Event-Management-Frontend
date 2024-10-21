@@ -7,7 +7,7 @@ const Register = () => {
     const[phone, setPhone] = useState("");
     const[name,setName] = useState("");
     const[role,setRole] = useState("");
-
+    const[isAuthorized,setIsAuthorized] = useState("")
 
     const RegisterHo = async(e)=>{
         e.preventDefault();
@@ -40,7 +40,7 @@ const Register = () => {
 
   return (
     <>
-        
+        react-hot-toast
     </>
   )
 }
