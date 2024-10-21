@@ -1,27 +1,47 @@
 import React, { useState } from 'react';
 
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth, db } from '../../firebase'; // Import Firebase initialization
+import { doc, setDoc } from 'firebase/firestore';
+
 const Register: React.FC = () => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [role, setRole] = useState<string>('');
+  
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({
+
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    await updateProfile(user, { displayName: name });
+
+    await setDoc(doc(db, 'users', user.uid), {
       name,
       email,
-      password,
       phone,
       role,
     });
+
     setName('');
     setEmail('');
     setPassword('');
     setPhone('');
     setRole('');
+
+    
+
+
+
   };
+
+  
+
+  
 
   return (
     <div style={{ maxWidth: '400px', margin: '0 auto' }}>

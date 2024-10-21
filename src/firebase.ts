@@ -1,5 +1,6 @@
 // src/firebase.ts
 import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 import { getAnalytics } from 'firebase/analytics';
 import { getAuth } from 'firebase/auth';
 
@@ -22,4 +23,7 @@ const analytics = getAnalytics(app);
 // Initialize Firebase Authentication
 const auth = getAuth(app);
 
-export { analytics, auth };
+// Initialize Firestore
+const db = getFirestore(app); // Firestore instance
+
+export { analytics, auth, db };
