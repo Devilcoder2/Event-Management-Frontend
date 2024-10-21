@@ -1,10 +1,8 @@
-import React from 'react';
 import Button from '@mui/material/Button';
-import HamburgerMenu from './Hamberger';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { useNavigate } from 'react-router-dom';
 
-function Navbar() {
+const UserNavbar = () => {
     const navigate = useNavigate();
 
     const handleAllEvents = () => {
@@ -20,19 +18,13 @@ function Navbar() {
     };
 
     return (
-        <div className='h-20 z-200 flex justify-between px-6 items-center shadow-md bg-white'>
-            <div>
-                <HamburgerMenu />
-            </div>
+        <div className='h-20 flex justify-between px-6 items-center shadow-md bg-slate-100'>
             <div className='flex gap-2'>
                 <Button variant='contained' onClick={handleAllEvents}>
                     All events
                 </Button>
                 <Button variant='contained' onClick={handleRegisterUser}>
-                    Resitered User
-                </Button>
-                <Button variant='contained' onClick={handleCreateEvent}>
-                    Create event +
+                    Resitered Events
                 </Button>
             </div>
             <div className='flex gap-5'>
@@ -44,6 +36,6 @@ function Navbar() {
             </div>
         </div>
     );
-}
+};
 
-export default Navbar;
+export default UserNavbar;

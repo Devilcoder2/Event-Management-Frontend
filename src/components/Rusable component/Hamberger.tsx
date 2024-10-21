@@ -1,33 +1,16 @@
 import React, { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import AllUsers from '../Admin/AllEvent';
-import RegisteredUser from '../Admin/ResisteredUser';
-// import CreateUser from '../Admin/CreateUser';
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedComponent, setSelectedComponent] = useState(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const renderComponent = () => {
-    switch (selectedComponent) {
-      case 'allUsers':
-        return <AllUsers />;
-      case 'registeredUser':
-        return <RegisteredUser />;
-      case 'createUser':
-        return <CreateUser />;
-      default:
-        return <p>Please select an option from the menu.</p>;
-    }
-  };
-
   return (
-    <div className="relative">
+    <div className="relative bg-white">
       <button className="text-2xl p-2 focus:outline-none" onClick={toggleMenu}>
         {isOpen ? <CloseIcon /> : <MenuIcon />}
       </button>
@@ -35,7 +18,7 @@ const HamburgerMenu = () => {
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-white shadow-[0px_3px_3px_3px_rgba(0,0,0,0.3)] p-4 transform ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform duration-300 ease-in-out`}
+        } transition-transform duration-300 ease-in-out z-50`} // Added z-50 for a higher z-index
       >
         <div className="flex justify-end">
           <CloseIcon onClick={toggleMenu} />
@@ -67,13 +50,10 @@ const HamburgerMenu = () => {
 
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black opacity-0"
+          className="fixed inset-0 bg-black opacity-0 z-40" // Ensuring the overlay is still lower than the menu
           onClick={toggleMenu}
         ></div>
       )}
-
-      
-      {/* <div className="p-4 mt-4">{renderComponent()}</div> */}
     </div>
   );
 };
