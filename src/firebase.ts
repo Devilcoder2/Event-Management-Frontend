@@ -45,33 +45,25 @@ async function sendNotification(title, message, userId) {
 }
 
 
-// sendNotification('New Message', 'You have a new message from John', 'user_12345'); it will used in resister event component
+// sendNotification('New Message', 'You have a new message from John', 'user_12345'); it will used in resister event
 
-
-
-function getNotifications(userId) {
-  const notificationsQuery = query(
-      collection(db, 'notifications'),
-      where('userId', '==', userId),
-      orderBy('timestamp', 'desc')
-  );
-
-  onSnapshot(notificationsQuery, (snapshot) => {
-      const notifications = [];
-      snapshot.forEach((doc) => {
-          notifications.push({ id: doc.id, ...doc.data() });
+async function getNotifications(userId) {
+  db.collection('notifications')
+      .where('userId', '==', userId)
+      .orderBy('timestamp', 'desc')
+      .onSnapshot((snapshot) => {
+          const notifications = [];
+          snapshot.forEach((doc) => {
+              notifications.push({ id: doc.id, ...doc.data() });
+          });
+          console.log('Notifications:', notifications);
+          // Here, you can update the UI to show the notifications
       });
-      console.log('Notifications:', notifications);
-      // Here, you can update the UI to show the notifications
-  });
 }
 
 // Example usage
-getNotifications('user_12345');
+// getNotifications('user_12345');used where get notifications
 
 
 
-// getNotifications('user_12345'); it will used in the admin allevent component
-
-
-export { analytics, auth, db,sendNotification,getNotifications };
+export { analytics, auth, db,sendNotification ,getNotifications};
