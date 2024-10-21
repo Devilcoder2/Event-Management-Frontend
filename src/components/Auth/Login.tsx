@@ -1,17 +1,14 @@
-import axios from 'axios';
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const Register: React.FC = () => {
-  const [name, setName] = useState<string>('');
+const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
   const [role, setRole] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const handleRegister = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);  
     setSuccessMessage(null); 
@@ -19,12 +16,10 @@ const Register: React.FC = () => {
     try {
      
       const response = await axios.post(
-        'http://localhost:4000/api/v1/user/register', 
+        'http://localhost:4000/api/v1/user/login',
         {
-          name,
           email,
           password,
-          phone,
           role,
         },
         {
@@ -34,20 +29,18 @@ const Register: React.FC = () => {
         }
       );
 
-   
+      
       if (response.status === 200) {
-       
-        setSuccessMessage('Registration successful!');
-        
-        setName('');
+      
+        setSuccessMessage('Login successful!');
+
         setEmail('');
         setPassword('');
-        setPhone('');
         setRole('');
       }
     } catch (error: any) {
       if (error.response && error.response.data && error.response.data.message) {
-        
+       
         setErrorMessage(error.response.data.message);
       } else {
         
@@ -57,25 +50,15 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="flex items- justify-center min-h-screen bg-slate-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-blue-300 p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+
+       
         {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
         {successMessage && <p className="text-green-500 mb-4">{successMessage}</p>}
-        <form onSubmit={handleRegister} className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Username</label>
-            <input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your name"
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            />
-          </div>
 
+        <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
             <input
@@ -103,20 +86,7 @@ const Register: React.FC = () => {
           </div>
 
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
-            <input
-              id="phone"
-              type="text"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Enter your phone number"
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="role" className="block text-sm font-medium text-gray-700">register As</label>
+            <label htmlFor="role" className="block text-sm font-medium text-gray-700">Login As</label>
             <input
               id="role"
               type="text"
@@ -132,12 +102,9 @@ const Register: React.FC = () => {
             <button
               type="submit"
               className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              onClick={handleRegister}
             >
-              Sign UP
+              Login 
             </button>
-            {/* <Link to={"/login"}>Login Now</Link> */}
-
           </div>
         </form>
       </div>
@@ -145,4 +112,6 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default Login;
+
+
