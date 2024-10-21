@@ -4,6 +4,9 @@ import AllEvent from './components/Admin/AllEvent';
 import RegisteredUser from './components/Admin/ResisteredUser';
 import CreateEventForm from './components/Admin/CreateEventForm';
 import UserHome from './components/User/UserHome';
+import Login from "../src/components/Auth/Login";
+import Register from "./components/Auth/Register";
+
 
 const App = () => {
     return (
@@ -21,6 +24,8 @@ const App = () => {
                     ></Route>
                 </Route>
                 <Route path='/user' element={<UserHome />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
             </Routes>
         </BrowserRouter>
     );
